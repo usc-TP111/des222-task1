@@ -7,16 +7,14 @@ body {
   height: 100vh;
 }
 
-.ball {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: blue;
+.star {
+  width: 150px;
+  filter: brightness(2) blur(1px);
 }
 
-/* Mobile: Change ball to red */
+/* Mobile: Change star to red */
 @media (max-width: 768px) {
-  .ball {
-    background-color: red;
+  .star {
+    filter: brightness(2) blur(1px) hue-rotate(180deg);
   }
 }

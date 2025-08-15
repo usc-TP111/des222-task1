@@ -1,8 +1,9 @@
 anime({
-  targets: ".ball",
+  targets: ".star",
   scale: [
-    { value: 1.5, duration: 1000, easing: "easeInOutQuad" },
-    { value: 1, duration: 1000, easing: "easeInOutQuad" },
+    { value: 1.3, duration: 800 },
+    { value: 1, duration: 800 },
   ],
   loop: true,
+  easing: "easeInOutSine",
 });
