@@ -1,44 +1,29 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CSS Grid Layout Example</title>
-    <link href='https://fonts.googleapis.com/css2?family=Source+Code+Pro' rel='stylesheet'>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    
-  <div class="main-container">
-    <div class="banner" id="banner">
-      <div class="banner-title">Creative Sparks</div>
-      <div class="banner-subtitle">Design Agency</div>
-    </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <title>Earth's Voice</title>
+  </head>
+  <body>
+    <div class="ball"></div>
 
-    <div class="team-member-card" id="teamMemberCard1">
-      <img class="team-member-card-image" id="teamMemberCardImage1" src="./images/Anuj.jpeg">
-      <div class="team-member-card-blurb" id="teamMemberCardBlurb1">An emerging creative designer with 3 years of experience, Anuj specializes in digital media design, typography, and illustration. Currently studying at UniSC, she combines modern trends with a timeless aesthetic to create innovative and enduring designs.</div>
-    </div>
-    <div class="team-member-card" id="teamMemberCard2">
-      <img class="team-member-card-image" id="teamMemberCardImage2" src="./images/Bob.jpeg">
-      <div class="team-member-card-blurb" id="teamMemberCardBlurb2">Leonardo is a dynamic Creative Director with a dual expertise in visual design and strategic thinking. A Central Saint Martins graduate, he transforms abstract concepts into tangible solutions, employing design thinking as a catalyst for business growth and social change.</div>
-    </div>
-    <div class="team-member-card" id="teamMemberCard3">
-      <img class="team-member-card-image" id="teamMemberCardImage3" src="./images/Diana.jpeg">
-      <div class="team-member-card-blurb" id="teamMemberCardBlurb3">UX/UI Designer Kiera, a School of Visual Arts graduate, combines aesthetics with user-centric design to enhance user experience. Specializing in prototyping, user research, and interaction design, Kiera's work blends functionality and beauty.</div>
-    </div>
-          
-    <div class="our-clients-title" id="ourClientsTitle">Our Clients</div>
-    <div class="client-icon-container" id="clientIcon1"><img class="client-icon" src="images/Example_Client_Icon_A.png"></div>
-    <div class="client-icon-container" id="clientIcon2"><img class="client-icon" src="images/Example_Client_Icon_B.png"></div>
-    <div class="client-icon-container" id="clientIcon3"><img class="client-icon" src="images/Example_Client_Icon_C.png"></div>
-    <div class="client-icon-container" id="clientIcon4"><img class="client-icon" src="images/Example_Client_Icon_D.png"></div>
-    <div class="client-icon-container" id="clientIcon5"><img class="client-icon" src="images/Example_Client_Icon_E.png"></div>
-    <div class="client-icon-container" id="clientIcon6"><img class="client-icon" src="images/Example_Client_Icon_F.png"></div>
-    <div class="client-icon-container" id="clientIcon7"><img class="client-icon" src="images/Example_Client_Icon_G.png"></div>
-    <div class="client-icon-container" id="clientIcon8"><img class="client-icon" src="images/Example_Client_Icon_H.png"></div>    
-  </div>
-    
-</body>
+    <script>
+      anime({
+        targets: ".ball",
+        scale: [
+          { value: 1.5, duration: 1000, easing: "easeInOutQuad" },
+          { value: 1, duration: 1000, easing: "easeInOutQuad" },
+        ],
+        loop: true,
+      });
+    </script>
+  </body>
 </html>
-  
