@@ -11,7 +11,47 @@
     <title>Earth's Voice</title>
   </head>
   <body>
-    <img src="images/node.png" class="star" />
+    <div class="scene">
+      <!-- Beam -->
+      <svg class="beams" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <line id="beamA" class="beam" x1="0" y1="0" x2="0" y2="0" />
+        <line id="beamB" class="beam" x1="0" y1="0" x2="0" y2="0" />
+      </svg>
+
+      <!-- Nodes -->
+      <div class="nodeWrap">
+        <div class="node node1">
+          <img src="images/node.png" alt="node layer A" class="layer layer-a" />
+          <img src="images/node.png" alt="node layer B" class="layer layer-b" />
+        </div>
+
+        <div class="node node2">
+          <img src="images/node.png" alt="node layer A" class="layer layer-a" />
+          <img src="images/node.png" alt="node layer B" class="layer layer-b" />
+        </div>
+      </div>
+
+      <!-- Terminal -->
+      <div class="terminal" id="term">
+        <span class="cursor"></span>
+      </div>
+
+      <!-- Earth -->
+      <div class="earthCenter">
+        <div class="earthWrap">
+          <div class="nodeRing">
+            <img class="ringImg" src="images/node-ring.png" />
+          </div>
+          <div class="earthTexture"></div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="textWrap">
+        <h1 id="title1">We gave the Earth a voice...</h1>
+        <h1 id="title2">... but are we listening?</h1>
+      </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="index.js"></script>

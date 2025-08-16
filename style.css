@@ -1,20 +1,212 @@
+:root {
+  --node-size: 160px;
+  --beam-width: 3px;
+}
+
 body {
   margin: 0;
   background-color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-family: "Source Code Pro";
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("images/space-bg.jpg") center/cover no-repeat;
+  opacity: 0;
+  transition: opacity 1.6s ease;
+  z-index: -1; /* stays behind content */
+}
+
+body.bg-reveal::before {
+  opacity: 1;
+}
+
+.scene {
+  position: relative;
+  width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
-.star {
-  width: 150px;
+.nodeWrap {
+  position: relative;
+  top: 40%;
+  scale: 1;
+  z-index: 2;
+}
+
+.node {
+  position: absolute;
+  opacity: 0;
+  width: var(--node-size);
+  height: var(--node-size);
+}
+
+.node1 {
+  left: 20%;
+}
+.node2 {
+  right: 20%;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   filter: brightness(2) blur(1px);
+  pointer-events: none;
 }
 
-/* Mobile: Change star to red */
+svg.beams {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.beam {
+  stroke: #aed1ff;
+  stroke-width: var(--beam-width);
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 6px #60ffea);
+  opacity: 0;
+}
+
+.terminal {
+  position: absolute;
+  width: min(90vw, 100vw);
+  padding: 12px 14px;
+  opacity: 0;
+  color: #00ff00;
+  font: 16px "Source Code Pro";
+  white-space: pre-line;
+  user-select: none;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background: #00ff00;
+  margin-left: 2px;
+  animation: blink 1s steps(1, end) infinite;
+  vertical-align: -0.15em;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.earthCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.earthWrap {
+  width: min(70vmin, 90vw);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(80, 160, 255, 0.25),
+    inset 0 0 60px rgba(0, 0, 0, 0.35);
+  transform: scale(0);
+}
+
+.earthTexture {
+  width: 200%;
+  height: 100%;
+  background: url("images/earth.jpg") 0 50% / auto 100% repeat-x;
+  opacity: 0;
+}
+
+.nodeRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+  opacity: 0;
+}
+
+.ringImg {
+  display: block;
+  width: min(70vmin, 90vw);
+  height: auto;
+  opacity: 0.9;
+  transform-origin: center;
+  filter: drop-shadow(0 0 10px rgba(120, 180, 255, 0.35));
+  mix-blend-mode: screen; /* try 'screen' or 'lighten' if PNG is bright on black */
+}
+
+.textWrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#title1,
+#title2 {
+  position: absolute;
+  width: 100%;
+  font: 28px "Source Code Pro";
+  color: #ffffff;
+  opacity: 0;
+}
+
+#title1 {
+  top: 8%;
+  left: 10%;
+  text-align: left;
+}
+
+#title2 {
+  bottom: 8%;
+  right: 10%;
+  text-align: right;
+}
+
+/* Mobile: stack vertically */
 @media (max-width: 768px) {
-  .star {
-    filter: brightness(2) blur(1px) hue-rotate(180deg);
+  :root {
+    --node-size: 110px;
+    --beam-width: 2.4px;
+  }
+
+  .node {
+    left: 40%;
+    transform: translate(-40%, -40%) scale(0);
+  }
+
+  .node1 {
+    top: 30%;
+    right: auto;
+  }
+
+  .node2 {
+    top: 70%;
+    left: 50%;
+  }
+
+  .terminal {
+    font-size: 10px;
+    padding: 10px 12px;
+  }
+
+  #title1,
+  #title2 {
+    font: 18px "Source Code Pro";
+    align-self: center;
   }
 }
