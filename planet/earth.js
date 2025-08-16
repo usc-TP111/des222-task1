@@ -7,8 +7,6 @@ document.querySelectorAll(".node").forEach((node) => {
     if (window.innerWidth > 800) {
       content.style.left = `${node.offsetLeft + node.offsetWidth / 2 - content.offsetWidth / 2}px`;
       content.style.top = `${node.offsetTop + node.offsetHeight / 2 - content.offsetHeight / 2}px`;
-    } else {
-      content.style.top = node.offsetTop;
     }
   });
 });
