@@ -1,8 +1,22 @@
-document.querySelectorAll('.node').forEach(node => {
-  node.addEventListener('click', () => {
+document.querySelectorAll(".node").forEach((node) => {
+  node.addEventListener("click", () => {
     const device = node.dataset.device;
     const content = document.querySelector(`.content.${device}`);
-    content.classList.toggle('active');
+    content.classList.toggle("active");
+    // Set the content's position to the center of the node if the screen size is larger than 50em
+    if (window.innerWidth > 800) {
+      content.style.left = `${node.offsetLeft + node.offsetWidth / 2 - content.offsetWidth / 2}px`;
+      content.style.top = `${node.offsetTop + node.offsetHeight / 2 - content.offsetHeight / 2}px`;
+    } else {
+      content.style.top = node.offsetTop;
+    }
+  });
+});
+
+document.querySelectorAll(".content").forEach((content) => {
+  content.addEventListener("click", (e) => {
+    console.log(e);
+    e.target.classList.toggle("active");
   });
 });
 
@@ -24,9 +38,9 @@ async function pulse(selector) {
 
 anime({
   targets: ".bg",
-    opacity: [0, 1],
-    duration: 3000,
-    easing: "easeInOutSine",
+  opacity: [0, 1],
+  duration: 3000,
+  easing: "easeInOutSine",
 });
 
 const nodes = document.querySelectorAll(".node");

@@ -1,5 +1,5 @@
 :root {
-  --node-size: 120px;
+  --node-size: clamp(72px, 9vmin, 140px);
 }
 
 html {
@@ -8,7 +8,7 @@ html {
 
 body {
   margin: 0;
-  background-color: #cfcfcf;
+  background-color: #c4c4c4;
   font-family: "Source Code Pro";
 }
 
@@ -21,7 +21,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow: hidden;
-    opacity: 0;
+  opacity: 0;
 }
 
 .bg.city {
@@ -32,6 +32,12 @@ body {
 }
 .bg.home {
   background-image: url("../images/bg-home.jpg");
+}
+
+h,
+p,
+img {
+    pointer-events: none;
 }
 
 .scene,
@@ -66,8 +72,10 @@ body {
   position: absolute;
   width: var(--node-size);
   height: var(--node-size);
+  left: calc(var(--x) * 1%);
+  top: calc(var(--y) * 1%);
   scale: 1;
-  margin: 100px;
+  cursor: pointer;
 }
 
 .layer {
@@ -86,15 +94,27 @@ body {
   max-width: 400px;
   margin: 20px auto;
   text-align: center;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: #000000 5px solid;
+  border-radius: 32px;
+  padding: 20px;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .content.active {
   opacity: 1;
   transform: scale(1);
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .iot {
-  max-width: 4em;
+  max-width: 8em;
+  max-height: 8em;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 }
 
 .endCard {
@@ -117,80 +137,163 @@ body {
 }
 
 .endText h1 {
-  margin: 0 0 1em 0;
-  font-size: 4em;
+  margin: 0 0 64px 0;
+  font-size: 64px;
 }
 
 .endText p {
-  font-size: 1.5em;
+  margin: 0 64px;
+  font-size: 28px;
+}
+
+/* Node positions */
+.node1 {
+  --x: 25;
+  --y: 18;
+}
+.node2 {
+  --x: 75;
+  --y: 35;
+}
+.node3 {
+  --x: 45;
+  --y: 65;
+}
+.node4 {
+  --x: 70;
+  --y: 18;
+}
+.node5 {
+  --x: 20;
+  --y: 40;
+}
+.node6 {
+  --x: 50;
+  --y: 68;
+}
+.node7 {
+  --x: 25;
+  --y: 20;
+}
+.node8 {
+  --x: 70;
+  --y: 35;
+}
+.node9 {
+  --x: 40;
+  --y: 70;
 }
 
 /* Tablet */
 @media (max-width: 75em) {
-  .bgStack {
-    grid-template-rows: 50svh 40svh 40svh;
+  :root {
+    --node-size: clamp(64px, 10vmin, 128px);
+  }
+  .node1 {
+    --x: 20;
+    --y: 16;
+  }
+  .node2 {
+    --x: 70;
+    --y: 38;
+  }
+  .node3 {
+    --x: 30;
+    --y: 65;
+  }
+  .node4 {
+    --x: 72;
+    --y: 18;
+  }
+  .node5 {
+    --x: 20;
+    --y: 46;
+  }
+  .node6 {
+    --x: 60;
+    --y: 65;
+  }
+  .node7 {
+    --x: 18;
+    --y: 18;
+  }
+  .node8 {
+    --x: 65;
+    --y: 35;
+  }
+  .node9 {
+    --x: 25;
+    --y: 70;
   }
 
   .endText h1 {
-    font-size: 64px;
+    font-size: 52px;
   }
 
   .endText p {
-    font-size: 28px;
+    font-size: 24px;
   }
 }
 
 /* Mobile */
 @media (max-width: 50em) {
-  .bgStack {
-    grid-template-rows: 40svh 35svh 35svh;
+  :root {
+    --node-size: clamp(56px, 12vmin, 112px);
+  }
+
+  .content {
+    position: relative;
+    max-width: 90vw;
+    padding: 0;
+    font-size: 14px;
+  }
+
+  .node1 {
+    --x: 40;
+    --y: 8;
+  }
+  .node2 {
+    --x: 10;
+    --y: 50;
+  }
+  .node3 {
+    --x: 70;
+    --y: 72;
+  }
+
+  .node4 {
+    --x: 30;
+    --y: 8;
+  }
+  .node5 {
+    --x: 70;
+    --y: 40;
+  }
+  .node6 {
+    --x: 15;
+    --y: 72;
+  }
+
+  .node7 {
+    --x: 70;
+    --y: 8;
+  }
+
+  .node8 {
+    --x: 10;
+    --y: 40;
+  }
+
+  .node9 {
+    --x: 55;
+    --y: 72;
   }
 
   .endText h1 {
-    margin-bottom: 2em;
-    font-size: 36px;
+    font-size: 42px;
   }
 
   .endText p {
     font-size: 18px;
   }
-}
-
-
-/* Node positions */
-.node1 {
-  top: 0%;
-  left: 15%;
-}
-.node2 {
-  top: 30%;
-  left: 70%;
-}
-.node3 {
-  top: 60%;
-  left: 35%;
-}
-.node4 {
-  top: 5%;
-  left: 70%;
-}
-.node5 {
-  top: 35%;
-  left: 10%;
-}
-.node6 {
-  top: 65%;
-  left: 50%;
-}
-.node7 {
-  top: 5%;
-  left: 15%;
-}
-.node8 {
-  top: 30%;
-  left: 65%;
-}
-.node9 {
-  top: 65%;
-  left: 40%;
 }
