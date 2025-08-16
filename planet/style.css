@@ -1,0 +1,196 @@
+:root {
+  --node-size: 120px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #cfcfcf;
+  font-family: "Source Code Pro";
+}
+
+.bg {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+    opacity: 0;
+}
+
+.bg.city {
+  background-image: url("../images/bg-city.jpg");
+}
+.bg.nature {
+  background-image: url("../images/bg-forest.jpg");
+}
+.bg.home {
+  background-image: url("../images/bg-home.jpg");
+}
+
+.scene,
+.nodeWrap,
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.scene {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.nodeWrap {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  scale: 1;
+  z-index: 2;
+}
+
+.node {
+  position: absolute;
+  width: var(--node-size);
+  height: var(--node-size);
+  scale: 1;
+  margin: 100px;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: brightness(2) blur(1px);
+}
+
+.content {
+  position: absolute;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.6s ease;
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.content.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.iot {
+  max-width: 4em;
+}
+
+.endCard {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.endText {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 32px;
+  font-weight: bold;
+}
+
+.endText h1 {
+  margin: 0 0 1em 0;
+  font-size: 4em;
+}
+
+.endText p {
+  font-size: 1.5em;
+}
+
+/* Tablet */
+@media (max-width: 75em) {
+  .bgStack {
+    grid-template-rows: 50svh 40svh 40svh;
+  }
+
+  .endText h1 {
+    font-size: 64px;
+  }
+
+  .endText p {
+    font-size: 28px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 50em) {
+  .bgStack {
+    grid-template-rows: 40svh 35svh 35svh;
+  }
+
+  .endText h1 {
+    margin-bottom: 2em;
+    font-size: 36px;
+  }
+
+  .endText p {
+    font-size: 18px;
+  }
+}
+
+
+/* Node positions */
+.node1 {
+  top: 0%;
+  left: 15%;
+}
+.node2 {
+  top: 30%;
+  left: 70%;
+}
+.node3 {
+  top: 60%;
+  left: 35%;
+}
+.node4 {
+  top: 5%;
+  left: 70%;
+}
+.node5 {
+  top: 35%;
+  left: 10%;
+}
+.node6 {
+  top: 65%;
+  left: 50%;
+}
+.node7 {
+  top: 5%;
+  left: 15%;
+}
+.node8 {
+  top: 30%;
+  left: 65%;
+}
+.node9 {
+  top: 65%;
+  left: 40%;
+}

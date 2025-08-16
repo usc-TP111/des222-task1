@@ -1,3 +1,43 @@
+// Prevent multiple click events
+let earthClickable = false;
+
+document.querySelector(".earthWrap").addEventListener("click", () => {
+  if (!earthClickable) return;
+  earthClickable = false;
+
+  anime({
+    targets: ".earthWrap",
+    scale: [1, 6],
+    duration: 2000,
+    easing: "easeInOutQuad",
+  });
+
+  anime({
+    targets: ".textWrap",
+    opacity: [1, 0],
+    duration: 500,
+    easing: "easeInOutQuad",
+  });
+  
+  anime({
+    targets: "#clickPrompt",
+    opacity: [1, 0],
+    duration: 500,
+    easing: "easeInOutQuad",
+  });
+
+  anime({
+    targets: ".clouds",
+    scale: [0, 2],
+    opacity: [0, 1],
+    duration: 2000,
+    easing: "easeInOutQuad",
+  }).finished.then(() => {
+    // redirect when timeline is done
+    window.location.href = "planet/earth.html";
+  });
+});
+
 // Center point (in pixels) of an element
 function centerOf(el) {
   const r = el.getBoundingClientRect();
@@ -58,6 +98,7 @@ function spinLayers(nodeSelector) {
     easing: "linear",
     loop: true,
   });
+
   anime({
     targets: nodeSelector + " .layer-b",
     rotate: "-360deg",
@@ -155,6 +196,8 @@ async function typeHandshake() {
 }
 
 async function revealBackground() {
+  await sleep(1000); // wait for the beams to finish
+
   document.body.classList.add("bg-reveal");
 
   // Hide terminal
@@ -216,7 +259,7 @@ async function revealBackground() {
   });
 
   await sleep(4000);
-  
+
   // Fade in text 1
   anime({
     targets: "#title1",
@@ -224,12 +267,29 @@ async function revealBackground() {
     duration: 2000,
     easing: "easeInOutQuad",
   });
-  
+
   await sleep(4000);
-  
-  // Fade in text 1
+
+  // Fade in text 2
   anime({
     targets: "#title2",
+    opacity: [0, 1],
+    duration: 2000,
+    easing: "easeInOutQuad",
+  });
+
+  await sleep(2000); // Wait for text 2 to finish
+
+  // Allow the user to click the earth
+  earthClickable = true;
+  document.querySelector(".earthWrap").style.cursor = "pointer";
+
+  
+  await sleep(2000); // Show click prompt
+
+  // Fade in text 2
+  anime({
+    targets: "#clickPrompt",
     opacity: [0, 1],
     duration: 2000,
     easing: "easeInOutQuad",
@@ -270,11 +330,11 @@ tl.add({
   });
 
 anime({
-  targets: '.earthTexture',
-  backgroundPositionX: ['0px','2048px'], // use your real texture width
+  targets: ".earthTexture",
+  backgroundPositionX: ["0px", "2048px"],
   duration: 60000,
-  easing: 'linear',
-  loop: true
+  easing: "linear",
+  loop: true,
 });
 
 // keep beams aligned on resize/orientation change
