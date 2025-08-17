@@ -1,8 +1,19 @@
+const scrollArrow = document.querySelector('.scroll-arrow');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    scrollArrow.classList.add('hidden');
+  } else {
+    scrollArrow.classList.remove('hidden');
+  }
+});
+
+const clickArrow = document.querySelector('.click-arrow');
 document.querySelectorAll(".node").forEach((node) => {
   node.addEventListener("click", () => {
     const device = node.dataset.device;
     const content = document.querySelector(`.content.${device}`);
     content.classList.toggle("active");
+    clickArrow.classList.add('hidden');
     // Set the content's position to the center of the node if the screen size is larger than 50em
     if (window.innerWidth > 800) {
       content.style.left = `${node.offsetLeft + node.offsetWidth / 2 - content.offsetWidth / 2}px`;
@@ -67,14 +78,6 @@ anime({
   targets: ".layer-b",
   rotate: "-360deg",
   duration: 4000,
-  easing: "linear",
-  loop: true,
-});
-
-anime({
-  targets: ".earthTexture",
-  backgroundPositionX: ["0px", "2048px"], // use your real texture width
-  duration: 60000,
   easing: "linear",
   loop: true,
 });
